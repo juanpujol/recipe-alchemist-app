@@ -73,6 +73,12 @@ export function useQuickRecipeSave() {
             data: { recipe },
             sourceUrl: window.location.pathname
           });
+
+          // Also store the redirect location so we return to this page after auth
+          authStateManager.setRedirectAfterAuth(window.location.pathname, {
+            search: window.location.search,
+            hash: window.location.hash
+          });
           
           console.log("Stored recipe save request with action ID:", actionId);
           
